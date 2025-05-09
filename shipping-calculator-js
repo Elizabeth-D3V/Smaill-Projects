@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora de envíos</title>
+</head>
+<body>
+  <p>Calculadora de costos de envío</p>
+  <p>Compras menores de $40 - Envío $10</p>
+  <p>Compras mayores de $40 - Envío gratis</p>
+  <input placeholder="Costo de la compra" class="js-costo-input"
+          onkeydown="console.log(event.key);
+          if (event.key === 'Enter') {calcularTotal()}
+          ">
+  <button onclick="
+    calcularTotal();
+  ">Calcular</button>
+
+  <p class="js-costo-total"></p>
+
+  <script>
+    function calcularTotal() {
+      const inputElement = document.querySelector('.js-costo-input');
+      let costo = Number(inputElement.value);
+
+      if (costo < 40) {
+        costo = costo + 10;
+      }
+      document.querySelector('.js-costo-total')
+        .innerHTML = `Total $${costo}`;
+    }
+  </script>
+</body>
+</html>
